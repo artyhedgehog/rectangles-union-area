@@ -1,4 +1,6 @@
-package ru.e_legion.rectanglesunionarea;
+package ru.e_legion.rectanglesunionarea.models;
+
+import ru.e_legion.rectanglesunionarea.models.Rectangle;
 
 import static org.junit.Assert.*;
 

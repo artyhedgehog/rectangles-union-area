@@ -1,11 +1,11 @@
-package ru.e_legion.rectanglesunionarea;
+package ru.e_legion.rectanglesunionarea.models;
 
 import com.opencsv.CSVReader;
 
 import java.io.IOException;
 import java.io.Reader;
 
-public class CSVReaderRectanglesUnionFactory {
+public class CSVReaderRectanglesUnionFactory implements RectanglesUnionFactory {
     private CSVReader reader;
 
     public CSVReaderRectanglesUnionFactory(Reader reader) {
@@ -13,8 +13,10 @@ public class CSVReaderRectanglesUnionFactory {
     }
     
     public RectanglesUnion create() {
+        RectanglesUnion union;
         String[] line;
-        RectanglesUnion union = new RectanglesUnion();
+
+        union = new RectanglesUnion();
         try {
             while (null != (line = reader.readNext())) {
                 union.add(new Rectangle(Integer.parseInt(line[0]),

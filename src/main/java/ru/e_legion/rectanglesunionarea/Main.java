@@ -1,24 +1,25 @@
 package ru.e_legion.rectanglesunionarea;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import java.io.Reader;
+
+import ru.e_legion.rectanglesunionarea.io.FileSystemHelper;
+import ru.e_legion.rectanglesunionarea.io.IOHelperException;
+import ru.e_legion.rectanglesunionarea.io.IOHelper;
+import ru.e_legion.rectanglesunionarea.models.CSVReaderRectanglesUnionFactory;
+import ru.e_legion.rectanglesunionarea.models.RectanglesUnion;
+import ru.e_legion.rectanglesunionarea.models.RectanglesUnionFactory;
 
 public class Main {
+    public static void main(final String[] args) throws IOHelperException {
+        final IOHelper ioHelper;
+        final Reader reader;
+        final RectanglesUnionFactory factory;
+        final RectanglesUnion union;
 
-    public static void main(String[] args) {
-        FileReader reader;
-        CSVReaderRectanglesUnionFactory factory;
-        RectanglesUnion union;
-
-        try {
-            reader = new FileReader(args[0]);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-            return;
-        }
-
+        ioHelper = new FileSystemHelper(args[0], args[1]);
+        reader = ioHelper.getSourceReader();
         factory = new CSVReaderRectanglesUnionFactory(reader);
         union = factory.create();
-        System.out.println(union.area());
+        ioHelper.writeResult(Integer.toString(union.area()));
     }
 }

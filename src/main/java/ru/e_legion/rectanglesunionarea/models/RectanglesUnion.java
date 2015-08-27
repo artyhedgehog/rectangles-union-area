@@ -1,4 +1,4 @@
-package ru.e_legion.rectanglesunionarea;
+package ru.e_legion.rectanglesunionarea.models;
 
 import java.util.ArrayList;
 import java.util.List;

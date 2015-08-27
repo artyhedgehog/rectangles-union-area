@@ -1,4 +1,4 @@
-package ru.e_legion.rectanglesunionarea;
+package ru.e_legion.rectanglesunionarea.models;
 
 public class Rectangle {
     private final int left;
