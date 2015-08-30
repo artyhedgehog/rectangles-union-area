@@ -5,5 +5,5 @@ import java.io.Reader;
 public interface IOHelper {
     Reader getSourceReader() throws IOHelperException;
 
-    void writeResult(String result);
+    void writeResult(String result) throws IOHelperException;
 }

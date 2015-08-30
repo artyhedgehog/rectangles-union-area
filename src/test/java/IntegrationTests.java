@@ -25,14 +25,12 @@ public class IntegrationTests {
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Main.main(new String[]{inputFile1, outputFile1});
-        Assert.assertEquals("36\n", out.toString());
-//        assertFileContentsEquals(outputFile1, "36");
+        assertFileContentsEquals(outputFile1, "36");
 
         out = new ByteArrayOutputStream();
         System.setOut(new PrintStream(out));
         Main.main(new String[]{inputFile2, outputFile2});
-        Assert.assertEquals("7\n", out.toString());
-//        assertFileContentsEquals(outputFile2, "7");
+        assertFileContentsEquals(outputFile2, "7");
     }
 
     private void assertFileContentsEquals(String fileName, String expected)
@@ -44,7 +42,7 @@ public class IntegrationTests {
 
     @After
     public void tearDown() throws Exception {
-//        Files.delete(Paths.get(outputFile1));
-//        Files.delete(Paths.get(outputFile2));
+        Files.delete(Paths.get(outputFile1));
+        Files.delete(Paths.get(outputFile2));
     }
 }
