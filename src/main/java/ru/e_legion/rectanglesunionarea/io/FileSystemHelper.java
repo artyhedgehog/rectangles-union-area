@@ -36,7 +36,7 @@ public class FileSystemHelper implements IOHelper {
             writer.write(result);
         } catch (IOException e) {
             final String message;
-            message = String.format("Unabled to create writer for file %s.",
+            message = String.format("Unabled to write result to a file %s.",
                                     outputFileName);
             throw new IOHelperException(message, e);
         }
