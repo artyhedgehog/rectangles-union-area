@@ -7,12 +7,12 @@ public class Rectangle {
     private final int bottom;
 
 
-    public Rectangle(int left, int top, int right, int bottom) {
+    public Rectangle(int x1, int y1, int x2, int y2) {
         super();
-        this.left = left;
-        this.top = top;
-        this.right = right;
-        this.bottom = bottom;
+        this.left = Math.min(x1, x2);
+        this.top = Math.min(y1, y2);
+        this.right = Math.max(x1, x2);
+        this.bottom = Math.max(y1, y2);
     }
 
 
