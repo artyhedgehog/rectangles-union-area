@@ -5,6 +5,9 @@ import com.opencsv.CSVReader;
 import java.io.IOException;
 import java.io.Reader;
 
+/**
+ * Factory implementation based on an external CSV library to read input data.
+ */
 public class CSVReaderRectanglesUnionFactory implements RectanglesUnionFactory {
     public static final String
             ERROR_TOKENS_COUNT = "expected %d tokens in line";
@@ -15,19 +18,45 @@ public class CSVReaderRectanglesUnionFactory implements RectanglesUnionFactory {
     public static final String
             ERROR_LINES_COUNT = "lines count exceeded the limit";
 
+    /**
+     * Number of numeric tokens in each line.
+     */
     public static final int TOKENS_PER_LINE = 4;
+
+    /**
+     * Limit for lines number in input.
+     */
     public static final int LINES_LIMIT = 100;
+
+    /**
+     * Minimum acceptable coordinate value.
+     */
     public static final int MIN_COORDINATE = -10000;
+
+    /**
+     * Maximum acceptable coordinate value.
+     */
     public static final int MAX_COORDINATE = 10000;
+
 
     private CSVReader reader;
 
 
+    /**
+     * @param reader Base CSV (or rather SSV for Space Separated Values) input
+     *               reader.
+     */
     public CSVReaderRectanglesUnionFactory(Reader reader) {
         this.reader = new CSVReader(reader, ' ');
     }
 
 
+    /**
+     * Create a union based on CSV input reader provided on the factory object
+     * creation.
+     * @return A unit built by rectangles coordinates in CSV input.
+     * @throws WrongInputException on wrong input format.
+     */
     public RectanglesUnion create() throws WrongInputException {
         RectanglesUnion union;
         String[] lineTokens;

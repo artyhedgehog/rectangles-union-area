@@ -1,5 +1,8 @@
 package ru.e_legion.rectanglesunionarea.io;
 
+/**
+ * Represents failure during some operation with input or output.
+ */
 public class IOHelperException extends Exception {
     public IOHelperException() {
     }

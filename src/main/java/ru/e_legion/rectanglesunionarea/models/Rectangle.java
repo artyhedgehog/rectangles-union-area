@@ -1,5 +1,8 @@
 package ru.e_legion.rectanglesunionarea.models;
 
+/**
+ * Model of rectangle with sides parallel to axis.
+ */
 public class Rectangle {
     private final int left;
     private final int top;
@@ -7,6 +10,14 @@ public class Rectangle {
     private final int bottom;
 
 
+    /**
+     * Construct rectangle via to points coordinates.
+     * Points can be of any opposite rectangle angles.
+     * @param x1 First angle abscissa.
+     * @param y1 First angle ordinate.
+     * @param x2 Second angle abscissa.
+     * @param y2 Second angle ordinate.
+     */
     public Rectangle(int x1, int y1, int x2, int y2) {
         super();
         this.left = Math.min(x1, x2);
@@ -16,10 +27,26 @@ public class Rectangle {
     }
 
 
+    /**
+     * Calculate if has not yet and get an area of current rectangle.
+     * @return The rectangle area.
+     */
     public int area() {
-        return (right - left) * (bottom - top);
+        if (-1 == area) {
+            area = (right - left) * (bottom - top);
+        }
+        return area;
     }
+    private int area = -1;
 
+    /**
+     * Create and get rectangle which represents and intersection of the current
+     * rectangle with another rectangle given as an argument.
+     * @param other Rectangle to find intersection with.
+     * @return Rectangle which acts as found intersection. If given rectangles
+     *          have no intersection between each other, a zero-sized rectangle
+     *          will be returned.
+     */
     public Rectangle intersection(Rectangle other) {
         if (!intersectsWith(other)) {
             return null;
@@ -34,6 +61,12 @@ public class Rectangle {
     }
 
 
+    /**
+     * Compare if the given rectangle is equivalent to the current one.
+     * @param otherObject Another rectangle to find intersection with.
+     * @return True if the given object is a rectangle model and has the same
+     *          coordinates.
+     */
     @Override
     public boolean equals(Object otherObject) {
         if (!(otherObject instanceof Rectangle)) {
@@ -46,19 +79,30 @@ public class Rectangle {
                 && getBottom() == otherRectangle.getBottom();
     }
 
-
+    /**
+     * @return Abscissa of the left side.
+     */
     public int getLeft() {
         return left;
     }
 
+    /**
+     * @return Top side ordinate.
+     */
     public int getTop() {
         return top;
     }
 
+    /**
+     * @return Abscissa of the right side.
+     */
     public int getRight() {
         return right;
     }
 
+    /**
+     * @return Bottom side ordinate.
+     */
     public int getBottom() {
         return bottom;
     }
@@ -76,5 +120,4 @@ public class Rectangle {
         return (includesX(other.getLeft()) || includesX(other.getRight()))
                 && (includesY(other.getTop()) || includesY(other.getBottom()));
     }
-
 }

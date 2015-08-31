@@ -1,5 +1,8 @@
 package ru.e_legion.rectanglesunionarea.models;
 
+/**
+ * Exception represents an error in input data for creation of a unit.
+ */
 public class WrongInputException extends Exception {
     public static final String
             MESSAGE_FORMAT = "Wrong input format in line %d, token %d: %s.";
@@ -21,10 +24,16 @@ public class WrongInputException extends Exception {
     }
 
 
+    /**
+     * @return line of input on which an error found.
+     */
     public int getLine() {
         return line;
     }
 
+    /**
+     * @return number of incorrect token
+     */
     public int getTokenNumber() {
         return tokenNumber;
     }
